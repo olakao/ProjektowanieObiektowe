@@ -1,0 +1,9 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Ignoruj pliki .gitignore w podfolderach
+**/.gitignore
+
+# Nie ignoruj głównego pliku .gitignore
+!/.gitignore
