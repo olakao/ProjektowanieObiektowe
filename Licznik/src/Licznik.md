@@ -226,3 +226,36 @@ Dlatego musimy zmienić kod i przypisać odpowiednią akcję do reset:
         frame.pack();
     }
 ```
+Drugim sposobem jest przypisanie każdemu przyciskowi osobnego ActionListener za pomocą klasy anonimowej. 
+Dzięki temu każdy przycisk ma własną metodę actionPerformed(), 
+która wykonuje odpowiednią akcję:
+```java
+        // Obsługa przycisku "Kliknij!"
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Counter counter = (Counter) counters.getSelectedItem();
+                counter.increase();
+
+                label.setText(Integer.toString(counter.currentValue()));
+                frame.pack();
+            }
+        });
+
+        // Obsługa przycisku "Reset"
+        reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Counter counter = (Counter) counters.getSelectedItem();
+                counter.reset();
+
+                label.setText(Integer.toString(counter.currentValue()));
+                frame.pack();
+            }
+        });
+```
+Do większej ilości przycisków sposób 2 mógłby być lepszy,
+ponieważ każdy przycisk ma osobną obsługę zdarzenia, 
+dzięki czemu kod jest czytelniejszy i łatwiejszy do modyfikowania. 
+Nie trzeba też tworzyć wielu instrukcji if sprawdzających, 
+który przycisk został kliknięty.
